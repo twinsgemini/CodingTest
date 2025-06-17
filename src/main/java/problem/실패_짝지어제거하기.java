@@ -15,7 +15,7 @@ package main.java.problem;
  * 문자열의 길이 : 1,000,000이하의 자연수
  * 문자열은 모두 소문자로 이루어져 있습니다.
  */
-public class 짝지어제거하기 {
+public class 실패_짝지어제거하기 {
     public int solution(String s) {
         int answer = -1;
         StringBuffer sb = new StringBuffer();
