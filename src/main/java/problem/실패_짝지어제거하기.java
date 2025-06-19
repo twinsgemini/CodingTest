@@ -17,36 +17,50 @@ package main.java.problem;
  */
 public class 실패_짝지어제거하기 {
     public int solution(String s) {
-        int answer = -1;
+        return removeCouple(s) ? 1 : 0;
+    }
+
+    public boolean removeCouple(String s) {
         StringBuffer sb = new StringBuffer();
-        char[] charArray = s.toCharArray();
         boolean repeat = false;
 
-        if (s.length() < 2) return 0;
+        if (s.length() == 0) return true;
+        if (s.length() == 1) return false;
 
-        // 짝 찾기
-        for(int i = 0; i < charArray.length - 1; i++) {
-            char c1 = charArray[i];
-            char c2 = charArray[i+1];
+        // 짝 제거
+        for(int i = 0; i < s.length() - 1; i++) {
+            char c1 = s.charAt(i);
+            char c2 = s.charAt(i+1);
 
             // 짝이면 제거하고 repeat = true
             if (c1 == c2) {
                 repeat = true;
-                if (i+2 < charArray.length) {
+                if (i+2 < s.length()) {
                     sb.append(s.substring(i+2));
                 }
                 break;
+            } else {
+                sb.append(s.substring(i, i+1));
             }
         }
 
         // 확인 후 재호출
         if (repeat == true) {
-            if (sb.length() == 0) return 1;
-            answer = solution(sb.toString());
+            return removeCouple(sb.toString());
         } else {
-            answer = 0;
+            return false;
         }
-
-        return answer;
     }
+
+    public static void main(String[] args) {
+        실패_짝지어제거하기 o = new 실패_짝지어제거하기();
+
+        System.out.println(o.solution("bbaabbaaccdd"));
+        System.out.println(o.solution("bbaabbaacdcd"));
+        System.out.println(o.solution("a"));
+        System.out.println(o.solution(""));
+        System.out.println(o.solution("aslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdjaslifdj"));
+
+    }
+
 }
