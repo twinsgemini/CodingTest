@@ -33,7 +33,7 @@ public class 실패_피보나치수 {
     }
 
     public static void main(String[] args) {
-        피보나치수 o = new 피보나치수();
+        실패_피보나치수 o = new 실패_피보나치수();
 
         System.out.println(o.solution(2));
         System.out.println(o.solution(3));
