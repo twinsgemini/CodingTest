@@ -17,27 +17,35 @@ package main.java.problem;
  * 제한 사항
  * n은 2 이상 100,000 이하인 자연수입니다.
  */
-public class 실패_피보나치수 {
+public class 피보나치수 {
     public int solution(int n) {
         int answer = 0;
+        int m = 1234567;
 
-        if (n == 0) {
-            answer = 0;
-        } else if (n == 1) {
-            answer = 1;
-        } else {
-            answer = solution(n-1) + solution(n-2);
+        // 저장용 배열 생성 및 초기값 설정
+        int[] array = new int[n+1];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = -1;
+        }
+        array[0] = 0;
+        array[1] = 1;
+
+        if (n <= 1) answer = n;
+
+        for (int i = 2; i <= n; i++) {
+            array[i] = (array[i - 1] + array[i - 2]) % m;
         }
 
-        return answer % 1234567;
+        return array[n];
     }
 
     public static void main(String[] args) {
-        실패_피보나치수 o = new 실패_피보나치수();
+        피보나치수 o = new 피보나치수();
 
         System.out.println(o.solution(2));
         System.out.println(o.solution(3));
         System.out.println(o.solution(5));
+        System.out.println(o.solution(9999));
     }
 
 }
